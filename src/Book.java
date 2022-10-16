@@ -8,13 +8,13 @@ abstract public class Book {
         this.hard_cover = hard_cover;
     }
 
-    public BookType getType() {
-        return BookType.NONE;
-    }
+    abstract public BookType getType();
 
-    public boolean equals(Book other) {
-        return this.title.equalsIgnoreCase(other.title) && this.author.equalsIgnoreCase(other.author)
-                && this.hard_cover == other.hard_cover;
+    @Override
+    public boolean equals(Object obj) {
+        if (getClass() != obj.getClass()) return false;
+        return this.title.equalsIgnoreCase(((Book) obj).title) && this.author.equalsIgnoreCase(((Book) obj).author)
+                && this.hard_cover == ((Book) obj).hard_cover;
     }
 
     public String toString() {
@@ -46,4 +46,16 @@ abstract public class Book {
     }
 
     abstract public String getCallNoAsString();
+
+    public static int compare(Book lhs, Book rhs) {
+        int callNoRes = lhs.getCallNoAsString().compareTo(rhs.getCallNoAsString());
+        if (callNoRes != 0) {
+            return callNoRes;
+        }
+        int authRes = lhs.author.compareTo(rhs.author);
+        if (authRes != 0) {
+            return authRes;
+        }
+        return lhs.title.compareTo(rhs.title);
+    }
 }

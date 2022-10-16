@@ -24,6 +24,9 @@ public class NonFictionBook extends Book {
     }
 
     public String getCallNoAsString() {
-        return Float.valueOf(this.callNo).toString().replace(".", "");
+        // TODO: pad with zeros to make sure that the bit before the . is three digits
+        String asInt = String.valueOf(Integer.valueOf((int) this.callNo));
+        int padLength = 3 - asInt.length();
+        return "0".repeat(padLength) + this.callNo;
     }
 }

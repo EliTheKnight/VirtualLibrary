@@ -26,6 +26,10 @@ public class Catalog {
         return true;
     }
 
+    public boolean findBook(Book in) {
+        return catalog.containsKey(in.getType()) && catalog.get(in.getType()).contains(in);
+    }
+
     public void clear() {
         // Clear catalog
         for (ArrayList<Book> list : catalog.values()) {
@@ -38,7 +42,7 @@ public class Catalog {
         // Sort each sub-catalog individually and then sort the whole thing by BookType.
         // The TreeMap naturally sorts the elements by key.
         for (ArrayList<Book> list : catalog.values()) {
-            list.sort(Comparator.comparing(Book::getCallNoAsString));
+            list.sort(Book::compare);
         }
     }
 
