@@ -45,7 +45,7 @@ abstract public class Book {
         this.hard_cover = hard_cover;
     }
 
-    abstract public String getCallNoAsString();
+    public abstract String getCallNoAsString();
 
     public static int compare(Book lhs, Book rhs) {
         int callNoRes = lhs.getCallNoAsString().compareTo(rhs.getCallNoAsString());

@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class Catalog {
     @SuppressWarnings("FieldMayBeFinal")
     private HashMap<BookType, ArrayList<Book>> catalog;
+    // TODO: storage
 
     public void addBook(Book in) {
         if (!catalog.containsKey(in.getType())) {

@@ -1,9 +1,8 @@
-import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Random;
-import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws NoSuchAlgorithmException {
         Catalog cat = new Catalog();
         // For testing
         /*
@@ -61,6 +60,9 @@ public class Main {
             System.out.print(book.toString() + ", ");
         }
         System.out.println();
+
+        User user = new User("yes", "no");
+        System.out.println("no " + user.getHashed());
     }
 
     private static String nextString(Random rand) {
