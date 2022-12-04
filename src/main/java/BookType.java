@@ -1,7 +1,7 @@
 public enum BookType {
     FICTION {
         public Book fromString(String[] in) throws NumberFormatException {
-            // Title and author are strings
+            // Title, call_no, and author are strings
             boolean hardCover = Boolean.parseBoolean(in[2]);
             return new FictionBook(in[0], in[1], hardCover, in[3]);
         }

@@ -20,7 +20,7 @@ public class Library {
             String line = scanner.nextLine();
             lineNo++;
             // Parse the line
-            String[] parts = line.split("·");
+            String[] parts = line.split(":");
             try {
                 // Enum nonsense
                 Book next = BookType.valueOf(parts[0]).fromString(Arrays.copyOfRange(parts, 1, parts.length));

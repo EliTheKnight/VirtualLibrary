@@ -1,10 +1,11 @@
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Objects;
 
 public class User {
     private String name;
     private String hashed;
-    private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
+    private static final char[] HEX_ARRAY = "0123456789abcdef".toCharArray();
 
     private static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 2];
@@ -35,14 +36,6 @@ public class User {
         this.name = name;
     }
 
-    public String getHashed() {
-        return hashed;
-    }
-
-    public void setHashed(String hashed) {
-        this.hashed = hashed;
-    }
-
     public void updatePassword(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         digest.update(password.getBytes());
@@ -50,9 +43,15 @@ public class User {
     }
 
     public static User fromString(String in) {
-        String[] fields = in.split("·");
+        String[] fields = in.split(":");
         User res = new User(fields[0]);
         res.hashed = fields[1];
         return res;
+    }
+
+    public boolean checkPass(String pass) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        digest.update(pass.getBytes());
+        return Objects.equals(this.hashed, bytesToHex(digest.digest()));
     }
 }

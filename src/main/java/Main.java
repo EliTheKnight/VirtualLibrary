@@ -1,4 +1,5 @@
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Main {
@@ -43,7 +44,6 @@ public class Main {
                 cat.addBook(new FictionBook(title, author, hard_cover, call_no));
             }
         }
-         */
 
         cat.addBook(new NonFictionBook("a", "b", false, 100.5F));
         System.out.println(cat.findBook(new NonFictionBook("a", "b", false, 100.5F)));
@@ -63,6 +63,17 @@ public class Main {
 
         User user = new User("yes", "no");
         System.out.println("no " + user.getHashed());
+
+        User user = new User("hello", "world");
+        System.out.print("Enter a password: ");
+        Scanner in = new Scanner(System.in);
+        System.out.println(user.checkPass(in.next()));
+        */
+
+        HashMap<String, User> users = new HashMap<>();
+        users.put("Bob", new User("Bob", "DontTellAlice"));
+        users.put("Alice", new User("Alice", "DontTellBob"));
+        LibraryGUI gui = new LibraryGUI(users);
     }
 
     private static String nextString(Random rand) {
