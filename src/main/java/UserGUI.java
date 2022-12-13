@@ -1,6 +1,5 @@
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
 
 public class UserGUI {
     private JFrame frame;
@@ -15,9 +14,12 @@ public class UserGUI {
         this.frame = new JFrame("Library");
         this.frame.setSize(400, 400);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GridBagLayout layout = new GridBagLayout();
+        this.frame.setLayout(layout);
+        GridBagConstraints constraints = new GridBagConstraints();
 
-        JPanel menuPanel = new JPanel();
-        menuPanel.setSize(400, 22);
+        JLabel label = new JLabel("Hello World!");
+
         JMenuBar mb = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
         JMenu viewMenu = new JMenu("View");
@@ -27,8 +29,8 @@ public class UserGUI {
         fileMenu.add(openFileMenuItem);
 
         mb.add(fileMenu);
-        menuPanel.add(mb);
-        this.frame.add(menuPanel);
+
+        this.frame.getContentPane().add(BorderLayout.NORTH, mb);
         this.frame.setVisible(true);
     }
 }
