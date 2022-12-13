@@ -9,6 +9,7 @@ public class LoginGUI {
     private JTextField username;
     private JPasswordField password;
     public HashMap<String, User> users;
+    private UserGUI ignored;
 
     LoginGUI(HashMap<String, User> users) {
         this.users = users;
@@ -79,6 +80,7 @@ public class LoginGUI {
         }
         if (success) {
             JOptionPane.showMessageDialog(this.frame, "You've been logged in!", "Login attempt", JOptionPane.INFORMATION_MESSAGE);
+            this.ignored = new UserGUI();
             this.frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         } else {
             JOptionPane.showMessageDialog(this.frame, "Incorrect username or password", "Login attempt", JOptionPane.ERROR_MESSAGE);

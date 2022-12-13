@@ -77,8 +77,7 @@ public class Main {
 
         Library lib = new Library(users, new Catalog());
         lib.loadCat("books_out.csv");
-        new LoginGUI(users);
-        System.out.println("got here");
+        LoginGUI ignored = new LoginGUI(users);
     }
 
     private static String nextString(Random rand) {
