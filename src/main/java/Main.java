@@ -1,9 +1,10 @@
+import java.io.FileNotFoundException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Random;
 
 public class Main {
-    public static void main(String[] args) throws NoSuchAlgorithmException {
+    public static void main(String[] args) throws NoSuchAlgorithmException, FileNotFoundException {
         Catalog cat = new Catalog();
         // For testing
         /*
@@ -71,9 +72,13 @@ public class Main {
         */
 
         HashMap<String, User> users = new HashMap<>();
-        users.put("Bob", new User("Bob", "DontTellAlice"));
-        users.put("Alice", new User("Alice", "DontTellBob"));
-        LibraryGUI gui = new LibraryGUI(users);
+        users.put("a", new User("b"));
+        users.put("b", new User("a"));
+
+        Library lib = new Library(users, new Catalog());
+        lib.loadCat("books_out.csv");
+        new LoginGUI(users);
+        System.out.println("got here");
     }
 
     private static String nextString(Random rand) {

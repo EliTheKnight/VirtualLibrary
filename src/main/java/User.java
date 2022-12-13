@@ -3,7 +3,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Objects;
 
 public class User {
-    private String name;
     private String hashed;
     private static final char[] HEX_ARRAY = "0123456789abcdef".toCharArray();
 
@@ -17,24 +16,19 @@ public class User {
         return new String(hexChars);
     }
 
-    public User(String name, String password) throws NoSuchAlgorithmException {
-        this.name = name;
+    private static User fromHashed(String hashed) {
+        User res = new User();
+        res.hashed = hashed;
+        return res;
+    }
+
+    public User(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         digest.update(password.getBytes());
         this.hashed = bytesToHex(digest.digest());
     }
 
-    public User(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public User() {}
 
     public void updatePassword(String password) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -44,9 +38,7 @@ public class User {
 
     public static User fromString(String in) {
         String[] fields = in.split(":");
-        User res = new User(fields[0]);
-        res.hashed = fields[1];
-        return res;
+        return fromHashed(fields[0]);
     }
 
     public boolean checkPass(String pass) throws NoSuchAlgorithmException {

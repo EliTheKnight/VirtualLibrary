@@ -1,18 +1,19 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
-public class LibraryGUI {
+public class LoginGUI {
     private JFrame frame;
     private JTextField username;
     private JPasswordField password;
     public HashMap<String, User> users;
 
-    LibraryGUI(HashMap<String, User> users) {
+    LoginGUI(HashMap<String, User> users) {
         this.users = users;
 
-        this.frame = new JFrame("Library");
+        this.frame = new JFrame("Library login");
 
         GridBagLayout frameLayout = new GridBagLayout();
         this.frame.setLayout(frameLayout);
@@ -74,10 +75,11 @@ public class LibraryGUI {
         try {
             success = target.checkPass(pass);
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(e);                                          
         }
         if (success) {
             JOptionPane.showMessageDialog(this.frame, "You've been logged in!", "Login attempt", JOptionPane.INFORMATION_MESSAGE);
+            this.frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
         } else {
             JOptionPane.showMessageDialog(this.frame, "Incorrect username or password", "Login attempt", JOptionPane.ERROR_MESSAGE);
         }
