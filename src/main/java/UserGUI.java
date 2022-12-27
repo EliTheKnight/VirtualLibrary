@@ -21,6 +21,8 @@ public class UserGUI {
         JLabel label = new JLabel("Hello World!");
 
         JMenuBar mb = new JMenuBar();
+        constraints.gridy = 20;
+        constraints.anchor = GridBagConstraints.NORTH;
         JMenu fileMenu = new JMenu("File");
         JMenu viewMenu = new JMenu("View");
 
@@ -30,7 +32,7 @@ public class UserGUI {
 
         mb.add(fileMenu);
 
-        this.frame.getContentPane().add(BorderLayout.NORTH, mb);
+        this.frame.add(mb, constraints);
         this.frame.setVisible(true);
     }
 }
