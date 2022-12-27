@@ -55,7 +55,7 @@ public class UserGUI {
     }
 
     public void logout() {
-        int choice = JOptionPane.showConfirmDialog(this.frame, "Are you sure you want to logout?", "Logout", JOptionPane.OK_CANCEL_OPTION);
+        int choice = JOptionPane.showConfirmDialog(this.frame, "Are you sure you want to logout?", "Logout", JOptionPane.YES_NO_OPTION);
         if (choice == 0) {
             this.frame.setVisible(false);
             System.exit(0);

@@ -22,7 +22,7 @@ public class Library {
             String line = scanner.nextLine();
             lineNo++;
             // Parse the line
-            String[] parts = line.split(":");
+            String[] parts = line.split(";");
             try {
                 // Enum nonsense
                 Book next = BookType.valueOf(parts[0]).fromString(Arrays.copyOfRange(parts, 1, parts.length));
@@ -46,7 +46,7 @@ public class Library {
         while (scanner.hasNextLine()) {
             String line = scanner.nextLine();
             lineNo++;
-            String[] parts = line.split(":");
+            String[] parts = line.split(";");
             try {
                 users.put(parts[0], new User(parts[1]));
             } catch (Exception e) {

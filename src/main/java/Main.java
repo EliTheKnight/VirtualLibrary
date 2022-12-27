@@ -76,7 +76,7 @@ public class Main {
         users.put("b", new User("a"));
 
         Library lib = new Library(users, new Catalog());
-        lib.loadCat("books_out.csv");
+        lib.loadCat("books.csv");
         new LoginGUI(users);
     }
 
