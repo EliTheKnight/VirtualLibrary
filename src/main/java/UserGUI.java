@@ -35,7 +35,7 @@ public class UserGUI {
         fileMenu.add(preferencesFileMenuItem);
 
         JMenuItem logoutFileMenuItem = new JMenuItem("Logout");
-        logoutFileMenuItem.addActionListener(e -> System.out.println("Logging out."));
+        logoutFileMenuItem.addActionListener(e -> logout());
         fileMenu.add(logoutFileMenuItem);
 
         mb.add(fileMenu);
