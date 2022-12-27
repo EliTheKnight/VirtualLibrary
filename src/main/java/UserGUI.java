@@ -55,7 +55,10 @@ public class UserGUI {
     }
 
     public void logout() {
-        JOptionPane.showConfirmDialog(this.frame, "Are you sure you want to logout?");
-        this.frame.setVisible(false);
+        int choice = JOptionPane.showConfirmDialog(this.frame, "Are you sure you want to logout?");
+        if (choice == 0) {
+            this.frame.setVisible(false);
+            System.exit(1);
+        }
     }
 }
