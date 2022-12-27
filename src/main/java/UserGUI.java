@@ -53,4 +53,9 @@ public class UserGUI {
         this.frame.add(mb, constraints);
         this.frame.setVisible(true);
     }
+
+    public void logout() {
+        JOptionPane.showConfirmDialog(this.frame, "Are you sure you want to logout?");
+        this.frame.setVisible(false);
+    }
 }
