@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 public class UserGUI {
@@ -17,10 +18,13 @@ public class UserGUI {
         GridBagLayout layout = new GridBagLayout();
         this.frame.setLayout(layout);
         GridBagConstraints constraints = new GridBagConstraints();
+        Border black_line_border = BorderFactory.createLineBorder(Color.black);
 
         JLabel label = new JLabel("Hello World!");
 
         JMenuBar mb = new JMenuBar();
+        constraints.gridx = 0;
+        constraints.gridy = 0;
         constraints.anchor = GridBagConstraints.NORTH;
         constraints.gridwidth = GridBagConstraints.REMAINDER;
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -52,6 +56,17 @@ public class UserGUI {
 
         this.frame.add(mb, constraints);
         this.frame.setVisible(true);
+
+        JPanel books = new JPanel();
+        constraints = new GridBagConstraints();
+        constraints.gridx = 0;
+        constraints.gridy = 0;
+        constraints.insets = new Insets(24, 1, 1, 1);
+        constraints.fill = GridBagConstraints.BOTH;
+
+        books.setBorder(black_line_border);
+
+        this.frame.add(books, constraints);
     }
 
     public void logout() {
