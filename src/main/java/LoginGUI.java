@@ -68,7 +68,7 @@ public class LoginGUI {
 
         User target = users.get(user);
         if (target == null) {
-            JOptionPane.showMessageDialog(this.frame, "User not found :(", "Login attempt", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.frame, "Incorrect username or password", "Login attempt", JOptionPane.ERROR_MESSAGE);
             return;
         }
         boolean success;
